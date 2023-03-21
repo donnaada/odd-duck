@@ -5,9 +5,13 @@ let maxRounds = 5;
 
 let trackerEl = document.getElementById('votingTracker');
 let containerEl = document.getElementById('productImages');
-let resultsTable = document.getElementById('resultsContainer');
 let imgEls = document.querySelectorAll('#productImages .container img');
 let pEls = document.querySelectorAll('#productImages .container p');
+
+let showResultsBtn = document.getElementById('showResultBtn');
+showResultsBtn.style.display='none';
+
+let resultsTable = document.getElementById('resultsContainer');
 
 
 function CreateProduct(name, source){
@@ -75,9 +79,9 @@ function renderImages(){
   imgEls[2].id = product3.name;
   product3.timesShown += 1;
 
-  pEls[0].innerHTML = `${product1.name} <br> shown ${product1.timesShown} times <br> clicked ${product1.timesClicked} times`;
-  pEls[1].innerHTML = `${product2.name} <br> shown ${product2.timesShown} times <br> clicked ${product2.timesClicked} times`;
-  pEls[2].innerHTML = `${product3.name} <br> shown ${product3.timesShown} times <br> clicked ${product3.timesClicked} times`;
+  pEls[0].textContent =`${product1.name}`;
+  pEls[1].textContent =`${product2.name}`;
+  pEls[2].textContent =`${product3.name}`;
 
 }
 
@@ -94,14 +98,11 @@ function handleClick(event){
   if (maxRounds -1 ){
     renderImages();
     maxRounds--;
+    
   } else {
     trackerEl.removeEventListener('click',handleClick);
-    containerEl.innerHTML = '';
-    containerEl.innerHTML = `
-    
-    <button onClick="displayResults()">Show Results</button>
-
-    `;
+    trackerEl.style.display = 'none';
+    showResultsBtn.style.display='block';
   }
 }
 
@@ -110,6 +111,9 @@ trackerEl.addEventListener('click', handleClick)
 
 
 function displayResults(){
+
+  resultsTable.style.display = 'block';
+
   let tbody = document.createElement('tbody');
   resultsTable.appendChild(tbody);
 
@@ -126,11 +130,12 @@ function displayResults(){
     <td>${item.timesClicked}</td>
     <td>${item.timesShown}</td>
     `;
-
     tbody.appendChild(trow);
   });
 
 
 }
+
+showResultsBtn.addEventListener('click', displayResults);
 
 
