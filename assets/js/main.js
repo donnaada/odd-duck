@@ -1,7 +1,7 @@
 // 'use strict';
 
 const state = [];
-let maxRounds = 5; 
+let maxRounds = 25;
 
 let trackerEl = document.getElementById('votingTracker');
 let containerEl = document.getElementById('productImages');
@@ -42,7 +42,7 @@ new CreateProduct('unicorn', './assets/img/unicorn.jpg');
 new CreateProduct('water-can', './assets/img/water-can.jpg');
 new CreateProduct('wine-glass', './assets/img/wine-glass.jpg');
 
-console.log("CURRENTLY RENDERED IMAGES", imgEls);
+console.log('CURRENTLY RENDERED IMAGES', imgEls);
 
 console.log('CURRENT STATE', state);
 
@@ -58,12 +58,12 @@ function renderImages(){
   let product2 = state[randomNum()];
   let product3 = state[randomNum()];
 
-    if (product1.name === product2.name || product1.name === product3.name) {
-    product1 = state[randomNum()]
+  if (product1.name === product2.name || product1.name === product3.name) {
+    product1 = state[randomNum()];
   } else if (product2.name === product1.name || product2.name === product3.name) {
-    product2 = state[randomNum()]
+    product2 = state[randomNum()];
   } else if (product3.name === product1.name || product3.name === product2.name) {
-    product3 = state[randomNum()]
+    product3 = state[randomNum()];
   }
 
   imgEls[0].src = product1.source;
@@ -85,7 +85,6 @@ function renderImages(){
 
 }
 
-  
 function handleClick(event){
   let productClicked = event.target.id;
 
@@ -98,7 +97,6 @@ function handleClick(event){
   if (maxRounds -1 ){
     renderImages();
     maxRounds--;
-    
   } else {
     trackerEl.removeEventListener('click',handleClick);
     trackerEl.style.display = 'none';
@@ -106,7 +104,7 @@ function handleClick(event){
   }
 }
 
-trackerEl.addEventListener('click', handleClick)
+trackerEl.addEventListener('click', handleClick);
 
 
 
@@ -118,7 +116,7 @@ function displayResults(){
   resultsTable.appendChild(tbody);
 
 
-  resultsTable.appendChild
+  resultsTable.appendChild;
   state.forEach(item => {
     console.log(item.name, item.timesClicked, item.timesShown, item.source);
     // containerEl.innerHTML ='';
