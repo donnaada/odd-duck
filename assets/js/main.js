@@ -125,11 +125,6 @@ function drawChart(){
         y: {
           beginAtZero: true
         }
-      }, 
-      plugins:{
-        tooltip:{
-          itemsSort:function()
-        }
       }
     }
   });
