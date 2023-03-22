@@ -84,7 +84,7 @@ function handleClick(event){
     maxRounds--;
   } else {
     trackerEl.removeEventListener('click',handleClick);
-    trackerEl.style.display = 'none';
+    // trackerEl.style.display = 'none';
     showResultsBtn.style.display='block';
 
 
@@ -109,16 +109,16 @@ function drawChart(){
   return new Chart(canvas, {
     type: 'bar',
     data: {
-      labels: labels, // how can we get the names of our goats??
+      labels: labels,
       datasets: [{
-        label: 'Times Shown',
-        data: timesShownVal, // where does this data live?
+        label: 'Times Clicked',
+        data: timesClickedVal,
         borderWidth: 1
       }, {
-        label: 'Times Clicked',
-        data: timesClickedVal, // where does this data live?
+        label: 'Times Shown',
+        data: timesShownVal, 
         borderWidth: 1
-      }], // do we have more than 1 dataset?
+      }],
     },
     options: {
       scales: {
@@ -138,7 +138,6 @@ function displayResults(){
 
 trackerEl.addEventListener('click', handleClick);
 showResultsBtn.addEventListener('click', displayResults);
-
 
 
 
