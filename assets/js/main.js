@@ -1,7 +1,7 @@
 // 'use strict';
 
 const state = [];
-let maxRounds = 5;
+let maxRounds = 25;
 
 let trackerEl = document.getElementById('votingTracker');
 let imgEls = document.querySelectorAll('#productImages .container img');
@@ -124,6 +124,11 @@ function drawChart(){
       scales: {
         y: {
           beginAtZero: true
+        }
+      }, 
+      plugins:{
+        tooltip:{
+          itemsSort:function()
         }
       }
     }
