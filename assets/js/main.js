@@ -128,8 +128,6 @@ function drawChart(){
       }
     }
   });
-
-
 }
 
 function displayResults(){
