@@ -1,7 +1,7 @@
 // 'use strict';
 
 let state = [];
-let maxRounds =5;
+let maxRounds = 25;
 
 let trackerEl = document.getElementById('votingTracker');
 let imgEls = document.querySelectorAll('#productImages .container img');
@@ -66,7 +66,7 @@ function renderImages(){
     product.timesShown += 1;
     product.productClicked +=1;
 
-    pEls[i].textContent = `${product.name}`;
+    pEls[i].textContent = `${product.name} had ${product.productClicked} votes, and was seen ${product.timesShown} times.`;
   }
 
 
@@ -81,7 +81,7 @@ function handleClick(event){
     }
   });
 
-  if (maxRounds -1 ){
+  if (maxRounds -1){
     renderImages();
     maxRounds--;
   } else {
