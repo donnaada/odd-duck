@@ -1,7 +1,7 @@
 // 'use strict';
 
-const state = [];
-let maxRounds = 25;
+let state = [];
+let maxRounds =5;
 
 let trackerEl = document.getElementById('votingTracker');
 let imgEls = document.querySelectorAll('#productImages .container img');
@@ -64,9 +64,11 @@ function renderImages(){
     imgEls[i].id = product.name;
     imgEls[i].alt = product.altTxt;
     product.timesShown += 1;
+    product.productClicked +=1;
 
     pEls[i].textContent = `${product.name}`;
   }
+
 
 }
 
@@ -89,6 +91,8 @@ function handleClick(event){
 
 
   }
+
+  storeData();
 }
 
 function drawChart(){
@@ -116,7 +120,7 @@ function drawChart(){
         borderWidth: 1
       }, {
         label: 'Times Shown',
-        data: timesShownVal, 
+        data: timesShownVal,
         borderWidth: 1
       }],
     },
@@ -134,7 +138,22 @@ function displayResults(){
   drawChart();
 }
 
+function storeData(){
+  let data = JSON.stringify(state);
+  localStorage.setItem('productData', data);
+}
 
+function readData(){
+  let data = localStorage.getItem('productData');
+
+  if (data){
+    state = JSON.parse(data);
+  } else {
+    storeData();
+  }
+}
+
+readData();
 
 trackerEl.addEventListener('click', handleClick);
 showResultsBtn.addEventListener('click', displayResults);
