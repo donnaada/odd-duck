@@ -9,16 +9,15 @@ A concept web application that helps the Odd Duck Product Co decide which projec
 
 ### Links and Resources
 
-* [submission PR](http://xyz.com)
-* Any Links you used as reference
+* [Odd Duck Demo Site](https://donnaada.github.io/odd-duck/)
 
 ### Lighthouse Accessibility Report Score
 
-* Provide a screenshot of your score after running a Lighthouse Accessibility report.
+![Lighthouse Report Screenshot](./assets/img/odd-duck-lighthouse.png)
 
 ### Tree Structure
 
-* The structure does not fully list out all the images in the `img` directory.
+* The structure does not fully list out all the images in the `img` directory but gives a representation of the structure of the project.
 
 ```sh
 Project Directory

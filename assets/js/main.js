@@ -8,6 +8,7 @@ let imgEls = document.querySelectorAll('#productImages .container img');
 let pEls = document.querySelectorAll('#productImages .container p');
 
 let showResultsBtn = document.getElementById('showResultBtn');
+let restartBtn = document.getElementById('restartBtn');
 showResultsBtn.style.display='none';
 
 let canvas = document.getElementById('canvas');
@@ -20,7 +21,6 @@ function CreateProduct(name, source, alt){
   this.altTxt = alt;
   state.push(this);
 }
-
 new CreateProduct('bag', './assets/img/bag.jpg','r2d2 design luggage');
 new CreateProduct('banana', './assets/img/banana.jpg','banana shaped slicer');
 new CreateProduct('bathroom', './assets/img/bathroom.jpg','tablet and tissue holder');
@@ -66,9 +66,8 @@ function renderImages(){
     product.timesShown += 1;
     product.productClicked +=1;
 
-    pEls[i].textContent = `${product.name} had ${product.productClicked} votes, and was seen ${product.timesShown} times.`;
+    pEls[i].textContent = `${product.name}`;
   }
-
 
 }
 
@@ -81,14 +80,14 @@ function handleClick(event){
     }
   });
 
-  if (maxRounds -1){
+  if (maxRounds){
     renderImages();
     maxRounds--;
   } else {
     trackerEl.removeEventListener('click',handleClick);
     // trackerEl.style.display = 'none';
     showResultsBtn.style.display='block';
-
+    restartBtn.style.display='block';
 
   }
 
@@ -104,11 +103,9 @@ function drawChart(){
     labels.push(item.name);
     timesClickedVal.push(item.timesClicked);
     timesShownVal.push(item.timesShown);
-
   });
 
   canvas.style.display='block';
-
 
   return new Chart(canvas, {
     type: 'bar',
@@ -134,8 +131,23 @@ function drawChart(){
   });
 }
 
+function drawResults(){
+  let divEl = document.getElementById('resultsContainer');
+  divEl.style.display = 'grid';
+
+  state.forEach(product => {
+    let pEl = document.createElement('p');
+    pEl.innerHTML =`
+    <span style="text-transform: capitalize">${product.name}</span> had ${product.timesClicked} votes, and was seen ${product.timesShown}
+    `;
+    divEl.appendChild(pEl);
+  });
+
+}
+
 function displayResults(){
   drawChart();
+  drawResults();
 }
 
 function storeData(){
@@ -151,12 +163,10 @@ function readData(){
   } else {
     storeData();
   }
+
 }
 
 readData();
 
 trackerEl.addEventListener('click', handleClick);
 showResultsBtn.addEventListener('click', displayResults);
-
-
-

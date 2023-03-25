@@ -10,8 +10,8 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-body {
-    min-height: 100vh;    
+section {
+  background-color: rgba(255, 255, 255, 0.8) ;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -20,27 +20,15 @@ h1, h2, h3, h4, h5, h6{
   font-weight: 600;
 }
 
-h1 {
-  font-size: 3.1rem;
+a {
+  color: rgb(21, 21, 117);
+  text-decoration: none;
 }
 
-h2 {
-  font-size: 2.6rem;
-}
-h3 {
-  font-size: 2.2rem;
-}
-
-h4 {
-  font-size: 1.9rem;
-}
-
-h5 {
-  font-size: 1.7rem;
-}
-
-h6 {
-  font-size: 1.4rem;
+a:hover, 
+a:visited, 
+a:active{
+  color: rgb(72, 16, 100);
 }
 
 p {
@@ -53,26 +41,20 @@ img{
     height:auto;
 }
 
-body{
-    max-width: 950px;
-    margin: 0 auto;
-}
-
 header{
     width: 100%;
-    background-color: lightyellow;
+    background-color: goldenrod;
 }
+
 header nav{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1.75rem 0;
+text-align: center;
+  padding: 1.5rem 0;
+  max-width: 950px;
+  margin: 0 auto;
 }
 
 header h1{
-    font-size:2vw;
+    font-size:4vw;
 }
 
 header nav ul{
@@ -86,10 +68,19 @@ header nav ul li{
 }
 
 main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  background: url(https://img.freepik.com/free-vector/linear-flat-abstract-lines-pattern_23-2148940824.jpg?w=996&t=st=1679706428~exp=1679707028~hmac=26526d39c88496497ae5fbf16d084b72798556ca40f29d05c0ef64a096082e11) repeat;
+  max-width: 950px;
+  padding: 50px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+main h2{
+  font-size: 2.5vw;
 }
 
 #votingTracker{
@@ -104,12 +95,13 @@ main{
 
 #productImages{
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 10px;
     /* width: 75%; */
     margin: 0 auto;
 }
+
 #productImages .container {
     padding: 5px;
     border: 10px solid rgba(186, 186, 186, 0.413);
@@ -126,8 +118,8 @@ main{
     font-weight: 600;
     text-align: center;
     text-transform: capitalize;
-    
 }
+
 #productImages .container img{
     width: 250px;
     height: 250px;
@@ -142,15 +134,34 @@ main{
     transform: scale(0.90);
 }
 
+#showResultBtn{
+  text-align: start; 
+  margin-bottom: 20px;
+}
+
+#canvas{
+  border: 1px solid black;
+}
+
 #resultsContainer{
     display: none;
-}
+    grid-template-columns:  1fr 1fr;
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid black;
+    padding: 10px;
+  }
 
 td:first-child{
     width: 200px;
     height: 200px;
     object-fit: contain;
-
 }
 
-
+footer{
+  position: sticky;
+  text-align: center;
+  padding: 1.2rem 0;
+  background-color: goldenrod;
+  bottom: 0;
+}
